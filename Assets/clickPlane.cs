@@ -47,16 +47,16 @@ public class clickPlane : MonoBehaviour {
 			}
 
 			clickPosition = Input.mousePosition;
-			clickPosition.z = 13f;
+			clickPosition.z = 15f;
 			myTiger = Instantiate (tiger, Camera.main.ScreenToWorldPoint(clickPosition), Quaternion.Euler(0, 180, 0));
-			myTiger.transform.localScale = Vector3.one * 3f;
+			myTiger.transform.localScale = Vector3.one * 2f;
 			myTiger.AddComponent<Rigidbody> ().useGravity = true;
 		}
-
+	
 		// オブジェクトの位置を原点に近づける
 		if (myTiger != null) { 
 			Vector3 pos = myTiger.transform.position;
-			pos.z -= 0.8f;
+			pos.z -= 1.1f;
 			myTiger.transform.position = pos;
 		}
 
@@ -93,5 +93,8 @@ public class clickPlane : MonoBehaviour {
 			Destroy (myTiger);
 			captureStatus = 0;
 		}
+
+		// 戻るボタンで終了
+		Input.backButtonLeavesApp = true;
 	}
 }
